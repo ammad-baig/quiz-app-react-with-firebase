@@ -64,6 +64,7 @@ export default function QuizApp() {
     }
 
     const restartQuiz = () => {
+        setQuizType('')
         setCurrentQuestion(0);
         setScore(0);
         setIsDone(false);

@@ -2,9 +2,17 @@ import React, { useState } from 'react'
 import ABButton from '../components/ABButton'
 import WriteInput from '../components/writeInput'
 import QuizForm from '../components/quizForm';
+import { fbLogOut } from '../config/firebasemethod';
 
 export default function AdminPanel() {
     const [quizType, setQuizType] = useState('');
+
+    const logOut = () => {
+        fbLogOut().then((res) => {
+            window.location.reload()
+        })
+            .catch(err => err)
+    }
     return (
         <>
             <div className='grid grid-cols-6 '>
@@ -27,7 +35,7 @@ export default function AdminPanel() {
                     </div>
                     <div className='my-12'>
                         <div className='my-4'>
-                            <ABButton className=' w-60 ' label='Logout' />
+                            <ABButton onClick={logOut} className=' w-60 ' label='Logout' />
                         </div>
                     </div>
                 </div>
